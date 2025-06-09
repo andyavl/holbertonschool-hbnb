@@ -1,0 +1,58 @@
+---
+config:
+  theme: neo-dark
+---
+classDiagram
+class User {
+  +id: UUID
+  +first_name: str
+  +last_name: str
+  +email: str
+  +password: str
+  +is_admin: bool
+  +created_at: datetime
+  +updated_at: datetime
+  +updateProfile()
+  +changePassword()
+}
+
+class Place {
+  +id: UUID
+  +title: str
+  +description: str
+  +price: float
+  +latitude: float
+  +longitude: float
+  +owner_id: UUID
+  +created_at: datetime
+  +updated_at: datetime
+  +placeRating()
+  +placeBookings()
+}
+
+class Review {
+  +id: UUID
+  +user_id: UUID
+  +place_id: UUID
+  +rating: int
+  +comment: str
+  +created_at: datetime
+  +updated_at: datetime
+  +editReview()
+  +removeReview()
+}
+
+class Amenity {
+  +id: UUID
+  +name: str
+  +description: str
+  +created_at: datetime
+  +updated_at: datetime
+  +addAmenity()
+  +removeAmenity()
+}
+
+User "1" o-- "0..*" Place : owns
+User "1" <.. "0..*" Review : writes
+Place "1" o-- "0..*" Review : receives
+Amenity "0..*" --* "1" Place : available in
