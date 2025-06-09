@@ -1,0 +1,27 @@
+---
+config:
+  theme: neo-dark
+---
+classDiagram
+direction TB
+    class PresentationLayer {
+	    +ServiceAPI
+		+InputValidation()
+	    +ServiceRequest()
+    }
+    class BusinessLogicLayer {
+	    +User
+	    +Place
+	    +Review
+	    +Amenity
+	    ProcessRequest()
+    }
+    class PersistenceLayer {
+	    +DatabaseAccess
+	    Query()
+		SavingData()
+		RetrievingData()
+    }
+	<<Interface>> PresentationLayer
+    PresentationLayer --> BusinessLogicLayer : Facade Pattern
+    BusinessLogicLayer --> PersistenceLayer : Database Operations
