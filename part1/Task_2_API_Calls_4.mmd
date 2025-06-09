@@ -1,0 +1,16 @@
+---
+config:
+  theme: neo-dark
+---
+sequenceDiagram
+    participant User
+    participant API
+    participant PlaceService
+    participant PlaceRepository
+
+    User->>API: GET /places
+    API->>PlaceService: fetch_places
+    PlaceService->>PlaceRepository: query_places
+    PlaceRepository-->>PlaceService: list_of_places
+    PlaceService-->>API: formatted_places
+    API-->>User: 200 OK

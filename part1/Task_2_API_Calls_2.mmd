@@ -1,0 +1,16 @@
+---
+config:
+  theme: neo-dark
+---
+sequenceDiagram
+    participant User
+    participant API
+    participant PlaceService
+    participant PlaceRepository
+
+    User->>API: POST /places
+    API->>PlaceService: place_data creation / validation
+    PlaceService->>PlaceRepository: save_place
+    PlaceRepository-->>PlaceService: place_saved
+    PlaceService-->>API: success
+    API-->>User: 201 status

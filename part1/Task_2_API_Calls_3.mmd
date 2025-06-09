@@ -1,0 +1,16 @@
+---
+config:
+  theme: neo-dark
+---
+sequenceDiagram
+    participant User
+    participant API
+    participant ReviewService
+    participant ReviewRepository
+
+    User->>API: POST /review
+    API->>ReviewService: review_creation / validation
+    ReviewService->>ReviewRepository: save_review
+    ReviewRepository-->>ReviewService: review_saved
+    ReviewService-->>API: success
+    API-->>User: 201 status

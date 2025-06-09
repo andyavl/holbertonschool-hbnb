@@ -1,0 +1,16 @@
+---
+config:
+  theme: neo-dark
+---
+sequenceDiagram
+    participant User
+    participant API
+    participant UserService
+    participant UserRepository
+
+    User->>API: POST /register
+    API->>UserService: user_data creation / validation
+    UserService->>UserRepository: save_user
+    UserRepository-->>UserService: user_saved
+    UserService-->>API: success
+    API-->>User: 201 status
