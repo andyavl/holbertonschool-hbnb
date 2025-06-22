@@ -22,6 +22,26 @@ requirements.txt should contain this:
 
 ---
 
+## Business Logic Layer
+
+This layer implements the core entities for the HBnB system. Each class inherits from a shared `BaseModel` that provides a unique ID and timestamp tracking.
+
+### Implemented Classes:
+
+- `User`: Stores user info and permissions.
+- `Place`: Represents properties listed by users.
+- `Review`: Contains user-submitted reviews for places.
+- `Amenity`: Represents features like Wi-Fi, Parking, etc.
+
+### Sample Code:
+
+```python
+from app.models.user import User
+user = User("John", "Doe", "john@example.com")
+```
+
+---
+
 ## Directory Structure
 
 ```text
@@ -38,6 +58,7 @@ hbnb/
 │   │       ├── amenities.py
 │   ├── models/
 │   │   ├── __init__.py
+│   │   ├── base.py  
 │   │   ├── user.py
 │   │   ├── place.py
 │   │   ├── review.py
