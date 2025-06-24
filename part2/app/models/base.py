@@ -11,7 +11,7 @@ class BaseModel:
         self.updated_at = datetime.now()
     
     def update(self, data):
-        for key, value in data.item():
+        for key, value in data.items():
             if hasattr(self, key):
                 setattr(self, key, value)
         self.save()
