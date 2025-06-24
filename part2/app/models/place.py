@@ -20,8 +20,8 @@ class Place(BaseModel):
         self.reviews = []
         self.amenities = []
 
-def add_review(self, review):
-    self.reviews.append(review)
+    def add_review(self, review):
+        self.reviews.append(review)
 
-def add_amenity(self, amenity):
-    self.amenities.append(amenity)
+    def add_amenity(self, amenity):
+        self.amenities.append(amenity)
