@@ -19,16 +19,19 @@ class ReviewList(Resource):
     def post(self):
         """Register a new review"""
         data = api.payload
-        review = facade.create_review(data)
-        if not review:
-            return {'error': 'Invalid user or place ID'}, 400
-        return {
-            'id': review.id,
-            'text': review.text,
-            'rating': review.rating,
-            'user_id': review.user.id,
-            'place_id': review.place.id
-        }, 201
+        try:
+            review = facade.create_review(data)
+            if not review:
+                return {'error': 'Invalid user or place ID'}, 400
+            return {
+                'id': review.id,
+                'text': review.text,
+                'rating': review.rating,
+                'user_id': review.user.id,
+                'place_id': review.place.id
+            }, 201
+        except ValueError as e:
+            return {'error': str(e)}, 400
 
     @api.response(200, 'List of reviews retrieved successfully')
     def get(self):

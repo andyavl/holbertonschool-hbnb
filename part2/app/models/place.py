@@ -3,8 +3,12 @@ from app.models.base import BaseModel
 class Place(BaseModel):
     def __init__(self, title, description, price, latitude, longitude, owner):
         super().__init__()
+
+        if not title.strip():
+            raise ValueError("Title cannot be empty")
         if len(title) > 100:
             raise ValueError("Title must be 100 characters or fewer")
+
         self.title = title
         self.description = description
         self.price = price
