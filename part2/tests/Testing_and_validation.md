@@ -1,5 +1,6 @@
 # Implement Testing and Validation of the Endpoints
 
+
 ## User:
 
 ### Create user
@@ -59,7 +60,10 @@ curl -X 'POST' \
   "error": "Email must be valid and properly formatted"
 }
 ```
+
 ## Amenity:
+
+### Create amenity
 ```bash
 curl -X 'POST' \
   'http://127.0.0.1:5000/api/v1/amenities/' \
@@ -76,6 +80,7 @@ curl -X 'POST' \
   "name": "Wi-Fi"
 }
 ```
+
 
 ## Place:
 
@@ -177,6 +182,7 @@ curl -X POST http://localhost:5000/api/v1/places/
 ```bash
 {"error": "Longitude out of range"}
 ```
+
 
 ## Review:
 
