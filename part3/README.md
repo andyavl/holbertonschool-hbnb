@@ -198,6 +198,32 @@ flask shell
 >>> with open("scripts/seed.sql") as f: db.session.execute(text(f.read()))
 >>> db.session.commit()
 ```
+---
+Alternative:
+
+```bash
+flask --app run.py run
+```
+Then initialize the database with schema and seed data:
+
+```bash
+flask shell
+>>> from sqlalchemy import text
+>>> with open("scripts/schema.sql") as f:
+>>>     sql_script = f.read()
+>>> statements = [stmt.strip() for stmt in sql_script.split(';') if stmt.strip()]
+>>> for stmt in statements:
+>>>    db.session.execute(text(stmt))
+>>> db.session.commit()
+>>>
+>>> from sqlalchemy import text
+>>> with open("scripts/seed.sql") as f:
+>>>     sql_script = f.read()
+>>> statements = [stmt.strip() for stmt in sql_script.split(';') if stmt.strip()]
+>>> for stmt in statements:
+>>>    db.session.execute(text(stmt))
+>>> db.session.commit()
+```
 
 ---
 
