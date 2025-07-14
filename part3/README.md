@@ -226,4 +226,59 @@ flask shell
 ```
 
 ---
+## Tests using Curl
 
+Login as Admin:
+
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "admin@example.com", "password": "admin123"}'
+```
+
+Create Users:
+
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/users/ \
+     -H "Authorization: Bearer ADMIN_TOKEN_HERE" \
+     -H "Content-Type: application/json" \
+     -d '{"first_name": "Bob", "last_name": "User", "email": "bob@example.com", "password": "pass123"}'
+```
+
+Create Place:
+
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/places/ \
+     -H "Authorization: Bearer USER_TOKEN_HERE" \
+     -H "Content-Type: application/json" \
+     -d '{"title": "My place", "description": "A cozy place", "price": 150, "latitude": 40.7128, "longitude": -74.0060}'
+```
+
+Create Amenity:
+
+```bash
+curl -X POST http://localhost:5000/api/v1/amenities/ \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer USER_TOKEN_HERE" \
+     -d '{"name": "Air Conditioning", "description": "Central AC"}'
+```
+
+Write Review:
+
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/reviews/ \
+    -H "Authorization: Bearer USER_TOKEN_HERE" \
+    -H "Content-Type: application/json" \
+    -d '{
+    "text": "Amazing place!",
+    "rating": 5,
+    "place_id": "PLACEID_HERE"
+    }'
+```
+Delete Review:
+
+```bash
+curl -X DELETE "http://127.0.0.1:5000/api/v1/reviews/REVIEW_ID_HERE" -H "Authorization: Bearer USER_TOKEN_HERE"
+```
+
+---
