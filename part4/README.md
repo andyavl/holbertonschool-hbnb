@@ -65,6 +65,20 @@ The frontend communicates with the RESTful API backend via asynchronous fetch re
 
 ---
 
+## How Frontend and Backend Communicate
+
+- All API requests are sent to http://localhost:5000/api/v1/ endpoints.
+
+- JWT tokens received on login are saved in cookies and attached to authorized requests.
+
+- The frontend handles token expiration and redirects unauthorized users to login.
+
+- Public data like place listings and details can be viewed without authentication.
+
+- Actions like creating places and submitting reviews require login.
+
+---
+
 ## Python Dependencies
 
 Install required packages using:
@@ -81,20 +95,6 @@ pip install -r requirements.txt
 - `flask-jwt-extended`
 - `sqlalchemy`
 - `flask-sqlalchemy`
-
----
-
-## How Frontend and Backend Communicate
-
-- All API requests are sent to http://localhost:5000/api/v1/ endpoints.
-
-- JWT tokens received on login are saved in cookies and attached to authorized requests.
-
-- The frontend handles token expiration and redirects unauthorized users to login.
-
-- Public data like place listings and details can be viewed without authentication.
-
-- Actions like creating places and submitting reviews require login.
 
 ---
 
