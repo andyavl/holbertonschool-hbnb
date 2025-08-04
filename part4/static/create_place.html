@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register Place</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <header>
+            <a href="index.html">
+                <img src="images/logo.png" alt="HBnB Logo" class="logo">
+            </a>
+            <nav>
+                <a href="login.html" class="login-button" id="login-link">Login</a>
+            </nav>
+        </header>
+
+        <main>
+        <form id="create-place-form">
+            <h2>Register a New Place</h2>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="price">Price per Night ($):</label>
+            <input type="number" id="price" name="price" required min="0" step="1">
+
+            <label for="latitude">Latitude:</label>
+            <input type="number" id="latitude" name="latitude" step="any" required>
+
+            <label for="longitude">Longitude:</label>
+            <input type="number" id="longitude" name="longitude" step="any" required>
+
+            <button type="submit">Create Place</button>
+        </form>
+        </main>
+
+
+        <script src="scripts.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const token = document.cookie.split('; ').find(c => c.startsWith('token='));
+                if (!token) {
+                    alert('You must be logged in to register a place.');
+                    window.location.href = 'login.html';
+             }
+            });
+        </script>
+
+        <footer>
+            <p>© 2025 HBnB. All rights reserved.</p>
+        </footer>
+
+    </body>
+</html>
