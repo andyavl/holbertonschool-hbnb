@@ -270,6 +270,7 @@ You can open the HTML files directly in your browser or use a simple HTTP server
 python3 -m http.server 5500
 ```
 Then navigate to http://localhost:5500/part4/static/index.html in your browser.
+
 ---
 ## Backend Tests using Curl
 
